@@ -92,11 +92,11 @@ if (form) {
     const token = localStorage.getItem("token");
 
     try {
-      const res = await fetch("/api/bookings", {
-        method: "POST",
-        headers: { "Authorization": `Bearer ${token}` },
-        body: fd,
-      });
+      const res = await fetch("https://daddys-garage-backend.onrender.com/api/bookings", {
+  method: "POST",
+  body: fd,
+});
+
 
       const json = await res.json();
 
