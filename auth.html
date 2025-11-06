@@ -37,6 +37,7 @@
   </div>
 
 <script>
+  const API = "https://daddys-garage-backend.onrender.com";
 document.getElementById("goSignup").onclick = () => {
   loginBox.classList.add("hidden");
   signupBox.classList.remove("hidden");
@@ -52,11 +53,12 @@ document.getElementById("loginForm").addEventListener("submit", async (e)=>{
   const user = loginUser.value.trim();
   const pass = loginPass.value.trim();
 
-  const res = await fetch("/api/auth/login", {
-    method: "POST",
-    headers: { "Content-Type":"application/json" },
-    body: JSON.stringify({ user, pass })
-  });
+  const res = await fetch(`${API}/api/auth/login`, {
+  method: "POST",
+  headers: { "Content-Type":"application/json" },
+  body: JSON.stringify({ user, pass })
+});
+
 
   const json = await res.json();
 
@@ -75,16 +77,17 @@ document.getElementById("loginForm").addEventListener("submit", async (e)=>{
 // ✅ SIGNUP → Node backend
 document.getElementById("signupForm").addEventListener("submit", async(e)=>{
   e.preventDefault();
-  const res = await fetch("/api/auth/signup", {
-    method:"POST",
-    headers:{ "Content-Type":"application/json" },
-    body: JSON.stringify({
-      name: signupName.value,
-      email: signupEmail.value,
-      phone: signupPhone.value,
-      password: signupPass.value
-    })
-  });
+  const res = await fetch(`${API}/api/auth/signup`, {
+  method:"POST",
+  headers:{ "Content-Type":"application/json" },
+  body: JSON.stringify({
+    name: signupName.value,
+    email: signupEmail.value,
+    phone: signupPhone.value,
+    password: signupPass.value
+  })
+});
+
 
   const json = await res.json();
   if(json.status === "success"){
