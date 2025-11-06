@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Dashboard | Daddy's Garage</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Poppins, sans-serif;
+      background-color: #f4f6f8;
+    }
+    .header {
+      background: #0f6fb2;
+      color: white;
+      padding: 12px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header .left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 20px;
+      font-weight: 600;
+    }
+    .header img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: white;
+      padding: 2px;
+    }
+    .logout-btn {
+      background: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      color: #0f6fb2;
+    }
+    .logout-btn:hover {
+      background: #e3eefe;
+    }
+
+    .table-box {
+      margin: 30px auto;
+      width: 90%;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      padding: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th {
+      background: #0f6fb2;
+      color: white;
+      padding: 12px;
+      text-align: left;
+    }
+    td {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+  </style>
+
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="left">
+    <img src="https://cdn-icons-png.flaticon.com/512/3177/3177440.png">
+    Admin Dashboard
+  </div>
+  <button class="logout-btn" onclick="logout()">Logout</button>
+</div>
+
+<!-- Table -->
+<div class="table-box">
+  <h2>Bookings Overview</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Booking ID</th>
+        <th>Name</th>
+        <th>Service ID</th>
+        <th>Service Name</th>
+        <th>Car Model</th>
+        <th>Date & Time</th>
+      </tr>
+    </thead>
+    <tbody id="bookingTable"></tbody>
+  </table>
+</div>
+<script>
+  async function loadBookings(){
+    let res = await fetch("backend/fetch_bookings.php");
+    let data = await res.json();
+
+    document.querySelector("#bookingTable").innerHTML =
+      data.map(row => `
+        <tr>
+          <td>${row.booking_id}</td>
+          <td>${row.customer_name ?? ""}</td>
+          <td>${row.service_id}</td>
+          <td>${row.service_name ?? ""}</td>
+          <td>${row.car_model}</td>
+          <td>${row.booking_date}</td>
+        </tr>
+      `).join("");
+  }
+
+  // ✅ ADD THIS
+  loadBookings();
+
+  function logout() {
+  window.location.href = "auth.html"; // redirect to login/signup page
+}
+</script>
+
+</body>
+</html>

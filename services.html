@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services | Daddy's Garage</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer>
+    // Makes all service cards clickable
+    document.addEventListener("DOMContentLoaded", () => {
+      const cards = document.querySelectorAll(".card");
+      cards.forEach(card => {
+        card.addEventListener("click", () => {
+          const serviceName = card.querySelector("h3").innerText;
+          // Pass selected service to book.html using query parameter
+          window.location.href = `book.html?service=${encodeURIComponent(serviceName)}`;
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <div class="logo-section">
+      <img src="https://cdn-icons-png.flaticon.com/512/1048/1048311.png" class="logo-img" alt="Daddy's Garage Logo">
+      <h1>Daddy's Garage</h1>
+    </div>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="index.html" class="btn">Logout</a>
+    </nav>
+  </header>
+
+  <section id="services" class="services">
+    <h2>Our All Services</h2>
+    <div class="service-cards">
+      <div class="card"><h3>Basic Service</h3></div>
+      <div class="card"><h3>Standard Service</h3></div>
+      <div class="card"><h3>Comprehensive Service</h3></div>
+      <div class="card"><h3>Engine Repair</h3></div>
+      <div class="card"><h3>Clutch & Body Parts Repair</h3></div>
+      <div class="card"><h3>Suspension Work</h3></div>
+      <div class="card"><h3>Steering Repair</h3></div>
+      <div class="card"><h3>Transmission / Gearbox Repair</h3></div>
+      <div class="card"><h3>Brake Repair</h3></div>
+      <div class="card"><h3>AC Service</h3></div>
+      <div class="card"><h3>Car Wash</h3></div>
+      <div class="card"><h3>Battery Replacement</h3></div>
+      <div class="card"><h3>Tyre Replacement</h3></div>
+      <div class="card"><h3>Insurance Renewal</h3></div>
+      <div class="card"><h3>24×7 Roadside Assistance</h3></div>
+      <div class="card"><h3>Towing Service</h3></div>
+    </div>
+    <a class="btn-primary" href="book.html">Book Service</a>
+  </section>
+
+  <section id="about" class="about">
+    <h2>About Us</h2>
+    <p>At Daddy’s Garage, we provide top-quality repair, servicing, and maintenance with professional mechanics and transparent pricing.</p>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <p><strong>Email:</strong> support@daddysgarage.com</p>
+    <p><strong>Phone:</strong> +91 98765 43210</p>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-wrap">
+      <div class="footer-section company">
+        <img src="https://cdn-icons-png.flaticon.com/512/1048/1048311.png" class="footer-logo" alt="Daddy's Garage Logo">
+        <h3>Daddy's Garage</h3>
+        <p>7th Floor, Tower A, Spaze iTech Park,<br>
+        Sohna - Gurgaon Rd, Sector 49,<br>
+        Gurugram, Haryana 122018</p>
+      </div>
+      <div class="footer-section info">
+        <p><strong>Email:</strong> info@daddysgarage.in</p>
+        <p><strong>Phone:</strong> +91 9388893888</p>
+        <p><strong>Working Days:</strong> Monday - Sunday</p>
+        <p><strong>Working Hours:</strong> 7:00 AM - 9:00 PM</p>
+      </div>
+      <div class="footer-section apps">
+        <h4>Get Our App</h4>
+        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" class="store-btn"></a>
+        <a href="#"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" class="store-btn"></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2016–2025 Daddy's Garage Technologies Private Limited</p>
+    </div>
+  </footer>
+
+  <script src="https://kit.fontawesome.com/a2d9b2a67b.js" crossorigin="anonymous"></script>
+</body>
+</html>
